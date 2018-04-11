@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;BaseService.java&apos; to &apos;jt-common/src/main/java/com.jt.common.service&apos;&#x0D;&#x0A;- Original project: &apos;jt-manage-service&apos;&#x0D;&#x0A;- Destination element: &apos;jt-common/src/main/java/com.jt.common.service&apos;&#x0D;&#x0A;- Original element: &apos;com.jt.manage.service.BaseService.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="=jt-common/src\/main\/java&lt;com.jt.common.service" element1="/src\/main\/java&lt;com.jt.manage.service{BaseService.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1513586964533" units="1" version="1.0"/>
+</session>

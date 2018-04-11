@@ -1,0 +1,8 @@
+/back/manage.jsp
+/back/prod_list.jsp
+/back/sale_list.jsp
+/SaleInfoListServlet
+/DownLoadSILServlet
+/back/BackProductListServlet
+/servlet/AjaxChangePnumServlet
+/back/BackProdDeleteServlet

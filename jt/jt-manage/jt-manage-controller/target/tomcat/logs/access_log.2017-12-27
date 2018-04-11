@@ -1,0 +1,16 @@
+127.0.0.1 - - [27/Dec/2017:17:42:31 +0800] "GET /web/itemcat/all?callback=category.getDataService HTTP/1.0" 200 34732 http-bio-8082-exec-1 8717
+127.0.0.1 - - [27/Dec/2017:17:53:05 +0800] "GET /items/1474391975 HTTP/1.0" 200 181 http-bio-8082-exec-2 1603
+127.0.0.1 - - [27/Dec/2017:17:53:27 +0800] "GET /items/1474391971 HTTP/1.0" 200 180 http-bio-8082-exec-3 16
+127.0.0.1 - - [27/Dec/2017:17:56:39 +0800] "GET /items/1474391975 HTTP/1.0" 200 181 http-bio-8082-exec-4 42
+127.0.0.1 - - [27/Dec/2017:17:56:54 +0800] "GET /items/1474391966 HTTP/1.0" 200 - http-bio-8082-exec-5 14
+127.0.0.1 - - [27/Dec/2017:17:56:54 +0800] "GET /item/desc/1474391966 HTTP/1.0" 200 - http-bio-8082-exec-6 57
+127.0.0.1 - - [27/Dec/2017:17:57:05 +0800] "GET /items/1474391971 HTTP/1.0" 200 180 http-bio-8082-exec-7 9
+127.0.0.1 - - [27/Dec/2017:17:57:05 +0800] "GET /item/desc/1474391971 HTTP/1.0" 200 107 http-bio-8082-exec-8 16
+127.0.0.1 - - [27/Dec/2017:17:57:08 +0800] "GET /items/1474391971 HTTP/1.0" 200 180 http-bio-8082-exec-9 9
+127.0.0.1 - - [27/Dec/2017:19:28:27 +0800] "GET /items/1474391975 HTTP/1.0" 200 181 http-bio-8082-exec-1 955
+127.0.0.1 - - [27/Dec/2017:19:28:27 +0800] "GET /item/desc/1474391975 HTTP/1.0" 200 113 http-bio-8082-exec-2 60
+127.0.0.1 - - [27/Dec/2017:19:28:29 +0800] "GET /items/1474391975 HTTP/1.0" 200 181 http-bio-8082-exec-3 10
+127.0.0.1 - - [27/Dec/2017:19:38:39 +0800] "GET /items/1474391973 HTTP/1.0" 200 189 http-bio-8082-exec-4 41
+127.0.0.1 - - [27/Dec/2017:19:38:39 +0800] "GET /item/desc/1474391973 HTTP/1.0" 200 104 http-bio-8082-exec-5 80
+127.0.0.1 - - [27/Dec/2017:19:38:42 +0800] "GET /items/1474391973 HTTP/1.0" 200 189 http-bio-8082-exec-6 16
+127.0.0.1 - - [27/Dec/2017:20:04:13 +0800] "GET /web/itemcat/all?callback=category.getDataService HTTP/1.0" 200 16384 http-bio-8082-exec-7 13969

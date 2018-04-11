@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;BaseService.java&apos; to &apos;jt-manage-service/src/main/java/com.jt.manage.service&apos;&#x0D;&#x0A;- Original project: &apos;jt-common&apos;&#x0D;&#x0A;- Destination element: &apos;jt-manage-service/src/main/java/com.jt.manage.service&apos;&#x0D;&#x0A;- Original element: &apos;com.jt.common.service.BaseService.java&apos;" description="Copy compilation unit" destination="=jt-manage-service/src\/main\/java&lt;com.jt.manage.service" element1="/src\/main\/java&lt;com.jt.common.service{BaseService.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1513604824668" units="1" version="1.0"/>
+</session>

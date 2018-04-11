@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tarena.ht.mapper.UserMapper">
+<sql id="usersql">
+		SELECT * FROM	
+		(SELECT * FROM
+		user_p u
+		LEFT JOIN
+			(SELECT ui.USER_INFO_ID,ui.NAME,ui.CARD_NO,ui.JOIN_DATE,ui.SALARY,ui.BIRTHDAY,
+			ui.GENDER,ui.STATION,ui.TELEPHONE,ui.USER_LEVEL,ui.ORDER_NO,mui.USER_INFO_ID m_id,mui.NAME m_name FROM 
+		user_info_p ui
+			LEFT JOIN
+		user_info_p mui
+			ON
+		ui.MANAGER_ID = mui.USER_INFO_ID) ui
+		ON u.user_id=ui.USER_INFO_ID)u
+	LEFT JOIN 
+(SELECT dept_id d_id,DEPT_NAME d_name FROM dept_p) d
+	ON u.dept_id = d.d_id 
+	</sql>
+	<resultMap type="User" id="userRM" autoMapping="true">
+		<id column="user_id" property="userId"/>
+		<association property="dept" javaType="Dept">
+		<id column="d_id" property="deptId"/>
+		<result column="d_name" property="deptName"/>
+		</association>
+		<association property="userInfo" javaType="UserInfo">
+		<id column="user_info_id" property="userInfoId"/>
+		<result column="name" property="name"/>
+		<result column="card_no" property="cardNo"/>
+		
+		<result column="join_date" property="joinDate"/>
+		<result column="salary" property="salary"/>
+		<result column="birthday" property="birthday"/>
+		<result column="gender" property="gender"/>
+		<result column="station" property="station"/>
+		<result column="telephone" property="telephone"/>
+		<result column="remark" property="remark"/>
+		<result column="user_level" property="userLevel"/>
+		<result column="order_no" property="orderNo"/>
+		<association property="manager" javaType="UserInfo">
+			<id column="m_id" property="userInfoId"/>
+			<result column="m_name" property="name"/>
+		</association>
+		</association>
+	</resultMap>
+	<select id="findAll" resultMap="userRM">
+	<include refid="usersql"/>
+	</select>
+	
+	<update id="changeState">
+	update user_p set state=#{state} where user_id in
+	<foreach collection="userIds" item="id" open="(" close=")" separator=",">
+	#{id}
+	</foreach>
+	</update>
+	<!-- 删除 -->
+	<delete id="delete">
+	delete from user_p where user_id in
+	<!-- 因为传递过来的是一个参数 直接参数的类型（list,array） -->
+	<foreach collection="array" item="id" open="(" close=")" separator=",">
+	#{id}
+	</foreach>
+	</delete>
+	<!-- 查看 -->
+	
+	<select id="findOne" resultMap="userRM">
+	<include refid="usersql"/> where user_id=#{userId}
+	</select>
+	<!-- 新增 -->
+	<insert id="saveUser">
+	INSERT INTO user_p(user_id,dept_id,username,PASSWORD,state,create_time) 
+	VALUES(#{userId},#{dept.deptId},#{username},#{password},#{state},#{createTime})
+	</insert>
+	
+	<!-- 修改 -->
+	<update id="update">
+	UPDATE USER_P SET dept_id=#{dept.deptId},username=#{username},PASSWORD=#{password},state=#{state},create_time=#{createTime} WHERE user_id=#{userId}
+	</update>
+	<insert id="saveUserAndRole">
+	insert into role_user_p (role_id,user_id) values
+	<foreach collection="roleIds" item="roleId" separator=",">
+	(#{roleId},#{userId})
+	</foreach>
+	</insert>
+	<update id="deleteUserDept">
+	update user_p set dept_id="" where dept_id in
+	<foreach collection="array" item="deptId" open="(" close=")" separator=",">
+	#{deptId}
+	</foreach>
+	</update>
+	
+	<select id="login" resultMap="userRM">
+	<include refid="usersql"/> where username=#{username} and password=#{password}
+	</select>
+</mapper>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tarena.ht.mapper.ModuleMapper">
+	<resultMap type="Module" id="moduleRM" autoMapping="true">
+	<id column="module_id" property="moduleId"/>
+		<association property="parentmodule" javaType="Module">
+		<id column="p_id" property="moduleId"/>
+		<result column="p_name" property="name"/>
+		</association>
+	</resultMap>
+	<select id="findAll" resultMap="moduleRM">
+		SELECT * FROM 
+	module_p m
+		LEFT JOIN
+	(SELECT module_id p_id,NAME p_name FROM module_p)p
+		ON
+	m.parent_id=p.p_id
+	order by order_no
+	</select>
+	<update id="changeState">
+		update module_p set state=#{state} where module_id in
+		<foreach collection="moduleIds" item="moduleId" open="(" close=")" separator=",">
+		#{moduleId}
+		</foreach>
+	</update>
+	
+	<delete id="delete">
+	delete from module_p where module_id in
+		<foreach collection="array" item="moduleId" open="(" close=")" separator=",">
+		#{moduleId}
+		</foreach>
+	</delete>
+	
+	<select id="findOne" resultMap="moduleRM">
+	SELECT * FROM 
+	module_p m
+		LEFT JOIN
+	(SELECT module_id p_id,NAME p_name FROM module_p)p
+		ON
+	m.parent_id=p.p_id
+	 where m.module_id = #{moduleId}
+	</select>
+	<!-- 批量删除和角色的关联关系 -->
+	<delete id="deleteRoleModule">
+	delete form role_module_p where module_id in
+	<foreach collection="array" item="moduleId" open="(" close=")" separator=",">
+	#{moduleId}
+	</foreach>
+	</delete>
+</mapper>
